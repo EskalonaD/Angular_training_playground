@@ -2,3 +2,5 @@ import storybook
 
 set all precondition for storybook
 
+
+move interesting features from guessing game (dynamic components/custom form-control component/buttona)
