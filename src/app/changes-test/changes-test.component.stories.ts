@@ -9,7 +9,8 @@ export const onChanges = (): StoryReturn => {
         component: StoryWrapperComponent,
         inputs: {
             component: ChangesTestComponent,
-            inputs: {data: 'someData'},
+            inputs: { data: 'someData' },
+            outputs: {}
         }
 
     }
