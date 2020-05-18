@@ -9,8 +9,8 @@ import { StoryOutputs } from 'src/model';
 export class StoryWrapperComponent implements OnInit {
   constructor(private cfr: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) { }
 
-  @Input() data: any;
-  @Input() OutputHandler: any;    // 1 universal??
+  @Input() inputs: any;
+  @Input() OutputHandler: any;    // 1 universal?? doesn't needed?
 
   private dynamicComponent: Type<any>
   private dynamicComponentInputs: any;
@@ -19,14 +19,17 @@ export class StoryWrapperComponent implements OnInit {
 
 
   ngOnInit() {
-    this.dynamicComponent = this.data.component;
-    this.dynamicComponentInputs = this.data.inputs;
-    this.dynamicComponentOutputs = this.data.outputs;
+    this.dynamicComponent = this.inputs.component;
+    this.dynamicComponentInputs = this.inputs.inputs;
+    this.dynamicComponentOutputs = this.inputs.outputs;
 
     //dynamically create component inside;
     const componentFactory = this.cfr.resolveComponentFactory(this.dynamicComponent);
     const componentRef = this.viewContainerRef.createComponent(componentFactory);
-    const outputs = componentRef.instance.outputs.subscribe(event => console.log(event));   // variable doesnt' needed
+    const outputs = componentRef.instance.outputs.subscribe(event => console.log(event));   // variable doesnt' needed... place outputs here.
+    Object.keys(this.dynamicComponentInputs).forEach(input => {
+      componentRef.instance[input] = this.dynamicComponentInputs[input];
+    });
   }
 
 }
