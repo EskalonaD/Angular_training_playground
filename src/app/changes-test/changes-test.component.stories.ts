@@ -5,9 +5,9 @@ import { StoryReturn } from 'src/model';
 export default { title: 'On Changes Test' };
 
 export const onChanges = (): StoryReturn => {
-    return {
+    return <any>{
         component: StoryWrapperComponent,
-        inputs: {
+        props: {
             component: ChangesTestComponent,
             inputs: { data: 'someData' },
             outputs: {}

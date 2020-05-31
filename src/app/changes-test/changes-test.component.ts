@@ -7,7 +7,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter, SimpleChange
 })
 export class ChangesTestComponent implements OnInit, OnChanges {
 
-  @Input() data1;
+  @Input() inputs;
   @Input() data2;
 
   @Output() ouptut: EventEmitter<any> = new EventEmitter();

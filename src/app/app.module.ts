@@ -15,6 +15,7 @@ import { ChangesTestComponent } from './changes-test/changes-test.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ChangesTestComponent]
 })
 export class AppModule { }
