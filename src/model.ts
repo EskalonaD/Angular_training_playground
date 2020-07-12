@@ -18,8 +18,20 @@ export interface StoryInputs {
     [inputName: string]: any;
 }
 
+interface ModuleMetadata {
+    imports?: any[];
+    exports?: any[];
+    providers?: any[];
+    entryComponents?: any[];
+}
+
 export interface StoryReturn {
     component: Type<StoryWrapperComponent>;
-    inputs: StoryInputs;
+    props: StoryInputs;
     outputs?: StoryOutputs;
+    outputHandlers?: StoryOutputs;
+    // decorators?: any; // add type;
+    moduleMetadata?: ModuleMetadata;
 }
+
+export type BuildStories = () => StoryReturn;
