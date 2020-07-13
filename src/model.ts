@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Type } from '@angular/core';
+import { Component, ComponentRef, Type, EventEmitter } from '@angular/core';
 import { StoryWrapperComponent } from './app/story-wrapper/story-wrapper.component';
 
 export interface StoryOutputs {
@@ -35,3 +35,7 @@ export interface StoryReturn {
 }
 
 export type BuildStories = () => StoryReturn;
+
+export interface StorybookComponent {
+    output: EventEmitter<{event: string; payload: any}>;
+}

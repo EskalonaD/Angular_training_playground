@@ -1,30 +1,35 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, SimpleChange, SimpleChanges, DoCheck } from '@angular/core';
+import { StorybookComponent } from 'src/model';
 
 @Component({
   selector: 'app-changes-test',
   templateUrl: './changes-test.component.html',
   styleUrls: ['./changes-test.component.scss']
 })
-export class ChangesTestComponent implements OnInit, OnChanges {
+export class ChangesTestComponent implements OnInit, OnChanges, DoCheck, StorybookComponent {
 
   @Input() data1;
   @Input() data2;
 
-  @Output() ouptut: EventEmitter<any> = new EventEmitter();
+  @Output() output: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(1);
+  }
 
+  ngDoCheck() {
+    console.log(2);
   }
 
   onClick() {
-    this.ouptut.emit({ event: 'click', data: 1 });
+    this.output.emit({ event: 'click', payload: 1 });
   }
 
   onBlur() {
-    this.ouptut.emit({ event: 'blur', data: 2 });
+    this.output.emit({ event: 'blur', payload: 2 });
   }
 }

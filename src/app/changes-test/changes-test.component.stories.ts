@@ -8,6 +8,7 @@ import { AppModule } from '../app.module';
 export default { title: 'On Changes Test' };
 
 export const onChanges = (): StoryReturn => {
+    const inputs = {data: 'someData'};
     return {
         moduleMetadata: {
             imports: [AppModule]
@@ -15,8 +16,11 @@ export const onChanges = (): StoryReturn => {
         component: StoryWrapperComponent,
         props: {
             component: ChangesTestComponent,
-            inputs: { data: 'someData' },
-            outputs: {}
+            inputs,
+            outputs: {
+                // click: (value) => console.log(this),
+                click: function(value) {console.log(inputs); inputs.data = 'newData'},
+            }
         },
 
     }

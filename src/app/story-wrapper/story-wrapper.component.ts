@@ -43,9 +43,16 @@ export class StoryWrapperComponent implements OnInit {
      */
     const componentFactory = this.cfr.resolveComponentFactory(this.component);
     const componentRef = this.div.createComponent(componentFactory);
-    // const outputs = componentRef.instance.outputs.subscribe(event => console.log(event));   // variable doesnt' needed... place outputs here.
+
+    componentRef.instance.output.subscribe(({event, payload}) => {
+      console.log(event);
+      this.outputs[event](payload);
+    });   // variable doesnt' needed... place outputs here.
+
     Object.keys(this.inputs).forEach(input => {
       componentRef.instance[input] = this.inputs[input];
     });
+
+    console.log(componentRef.instance)
   }
 }
