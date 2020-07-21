@@ -1,3 +1,22 @@
 <div>
-    Change Detection triggers count : {{this.count}}
+    First time onchange hook triggers before onInit hook<br>
+    <p *ngIf='!onChangesCount'>
+
+        Dynamically created components doesn't trigger onChanges hook, use doCheck hook instead
+    </p>
+    On Change triggers count : {{ this.onChangesCount }} <br>
+    Do Check triggers count : {{ this.doCheckCount }}
+
+</div>
+
+<div>
+    Decorated input: {{ decoratedInput || 'undefined' }}
+</div>
+
+<div>
+    Undecorated input: {{ undecoratedInput || 'undefined' }}
+</div>
+
+<div *ngFor='let buttonInput of buttonsInput' class='button-block'>
+    <app-button [input]='buttonInput' (output)=handleOutput($event)></app-button>
 </div>

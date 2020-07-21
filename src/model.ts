@@ -1,5 +1,6 @@
 import { Component, ComponentRef, Type, EventEmitter } from '@angular/core';
-import { StoryWrapperComponent } from './app/story-wrapper/story-wrapper.component';
+import { StoryWrapperComponent } from './app/shared/story-wrapper/story-wrapper.component';
+// import { StoryWrapperComponent } from './app/story-wrapper/story-wrapper.component';
 
 export interface StoryOutputs {
     click?: (...args: any[]) => any;
@@ -14,11 +15,13 @@ export interface StoryOutputs {
 export interface StoryInputs {
     component: Type<any>;
     inputs?: any;
-    outputs?: StoryOutputs;
+    dynamicComponentInputs?: any;
+    dynamicComponentOutputs?: StoryOutputs;
     [inputName: string]: any;
 }
 
 interface ModuleMetadata {
+    declarations?: any[];
     imports?: any[];
     exports?: any[];
     providers?: any[];
@@ -38,4 +41,15 @@ export type BuildStories = () => StoryReturn;
 
 export interface StorybookComponent {
     output: EventEmitter<{event: string; payload: any}>;
+}
+
+export interface IOutput {
+    event: string;
+    payload: any;
+}
+
+
+export interface ButtonInput {
+    description: string;
+    action: () => void;
 }

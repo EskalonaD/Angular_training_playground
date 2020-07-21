@@ -4,3 +4,6 @@ set all precondition for storybook
 
 
 move interesting features from guessing game (dynamic components/custom form-control component/buttona)
+
+
+use feature module in storybook instead of app.module

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, SimpleChange, SimpleChanges, DoCheck } from '@angular/core';
-import { StorybookComponent } from 'src/model';
+import { StorybookComponent, IOutput } from 'src/model';
 
 @Component({
   selector: 'app-changes-test',
@@ -11,7 +11,7 @@ export class ChangesTestComponent implements OnInit, OnChanges, DoCheck, Storybo
   @Input() data1;
   @Input() data2;
 
-  @Output() output: EventEmitter<any> = new EventEmitter();
+  @Output() output: EventEmitter<IOutput> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class ChangesTestComponent implements OnInit, OnChanges, DoCheck, Storybo
     this.output.emit({ event: 'click', payload: 1 });
   }
 
-  onBlur() {
-    this.output.emit({ event: 'blur', payload: 2 });
-  }
+  // onBlur() {
+  //   this.output.emit({ event: 'blur', payload: 2 });
+  // }
 }
