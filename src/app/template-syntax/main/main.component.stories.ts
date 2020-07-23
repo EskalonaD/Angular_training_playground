@@ -1,8 +1,8 @@
 import { MainComponent } from './main.component';
 
-export default {title: 'displaying data in views'};
+export default {title: 'Template Syntax'};
 
-export const base = () => {
+export const basics = () => {
     return {
         component: MainComponent,
 

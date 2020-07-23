@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InputDecoratorTesterComponent } from './input-decorator-tester/input-decorator-tester.component';
 import { OutputHandlerDirective } from './output-handler.directive';
 import { SharedModule } from './shared/shared.module';
+// import { MainComponent } from './main/main.component';
 // import { ButtonComponent } from './button/button.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
     // ChangesTestComponent,
     // InputDecoratorTesterComponent,
     OutputHandlerDirective,
+    // MainComponent,
     // ButtonComponent
   ],
   imports: [

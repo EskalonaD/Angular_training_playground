@@ -1,0 +1,101 @@
+<p>interpolation works!</p>
+
+<p>Interpolation showing data as a string in template</p>
+
+<div>
+    <p>Could refer to a property</p>
+    <h3>{{title}}</h3>
+</div>
+
+<div>
+    <p>Could be set as attribute value</p>
+    <a href="{{googleUrl}}">go to google</a>
+</div>
+
+<div>
+    <p>First is evaluated then showed</p>
+    <p>1 + 1 is {{1+1}}</p>
+</div>
+
+<div>
+    <p>Can invoke methods during evaluation</p>
+    <p>1 + 1 is not {{1+1 + getVal()}}</p>
+</div>
+
+<div>
+    <p> Angular executes the expression and assigns it to a property of a <b>binding target;</b> the target could be an
+        <i>HTML element, a component, or a directive.</i>
+
+        You appear to be inserting the result between element tags and assigning it to attributes. However,
+        interpolation is a special syntax that Angular converts into a <i>property binding</i>.</p>
+</div>
+
+<div>
+    <p>Syntax ("{{ '{{ }' }}{{ '}' }}") can be changed via interpolation option in Component metadata object</p>
+</div>
+
+<div>
+    You can't use JavaScript expressions that have or promote side effects, including:
+    <ul>
+
+
+        <li>Assignments (=, +=, -=, ...)
+        <li>Operators such as new, typeof, instanceof, etc.
+        <li>Chaining expressions with ; or ,
+        <li>The increment and decrement operators ++ and --
+        <li>Some of the ES2015+ operators
+    </ul>
+    <br>
+    Other notable differences from JavaScript syntax include:
+    <ul>
+
+        <li>No support for the bitwise operators such as | and &
+        <li>New template expression operators, such as |, ?. and !
+    </ul>
+</div>
+
+<div>
+    <h3>Template variables</h3>
+    <p>Template input variables: varibles defined in directive(example: *ngFor='let customer of customers)</p>
+    <p>Template reference variables: variables defined in element(example: &lt;div #customer&gt;&lt;/div&gt;)</p>
+</div>
+
+<div>
+    <h3>Expression context</h3>
+    The context for terms in an expression is a blend of the template variables, the directive's context object (if it
+    has one), and the component's members.
+    If you reference a name that belongs to more than one of these namespaces, the template variable name takes
+    precedence, followed by a
+    name in the directive's context, and, lastly, the component's member names.
+</div>
+
+<div>
+    <h3>Best practices</h3>
+    <ul>
+        <li>
+            Simplicity:
+            <br>
+            template expressions should be as simple as could be. Complex logic better move to component.
+        </li>
+        <li>
+            Quick execution:
+            <br>Angular executes template expressions after every change detection cycle.
+            Change detection cycles are triggered by many asynchronous activities such as promise resolutions, HTTP
+            results, timer events, key presses and mouse moves.
+            <br>
+            Expressions should finish quickly or the user experience may drag, especially on slower devices. Consider
+            caching values when their computation is expensive.
+        </li>
+        <li>
+            No visible side effects:
+            <br>
+            An idempotent expression is ideal because it is free of side effects and improves Angular's change detection
+            performance.
+            <br>
+            Dependent values should not change during a single turn of the event loop.
+            <br>
+            If the expression returns an object, including an array, it returns the same object reference when called twice in a row. (exception: trackBy of ngFor directive.
+            It can deal with referential inequality of objects when iterating over them. see <a href='https://angular.io/guide/built-in-directives#ngfor-with-trackby'>trackBy</a>)
+        </li>
+    </ul>
+</div>
